@@ -28,6 +28,7 @@ input.onButtonPressed(Button.A, function () {
     basic.pause(2000)
     zoombit.brake()
     music.playMelody("A B A B A B A B ", 120)
+    zoombit.setHeadlight(HeadlightChannel.All, zoombit.digitalStatePicker(DigitalIoState.On))
 })
 input.onButtonPressed(Button.B, function () {
     zoombit.move(MotorDirection.Forward, 128)
@@ -59,15 +60,32 @@ input.onButtonPressed(Button.B, function () {
     basic.pause(2000)
     zoombit.brake()
     music.playMelody("A B A B A B A B ", 120)
+    zoombit.setHeadlight(HeadlightChannel.All, zoombit.digitalStatePicker(DigitalIoState.On))
 })
 basic.showString("Bog bog")
-rekabit.clearAllRgbPixels()
-basic.forever(function () {
+for (let index = 0; index < 4; index++) {
+    basic.showLeds(`
+        . . . . .
+        . . . . .
+        . . # . .
+        # # . # #
+        # # . # #
+        `)
+    basic.showLeds(`
+        . . . . .
+        . . # . .
+        . . # . .
+        # # . # #
+        # # . # #
+        `)
     basic.showLeds(`
         . . # . .
         . . # . .
         . . # . .
-        # # # # #
-        # # # # #
+        # # . # #
+        # # . # #
         `)
+}
+basic.forever(function () {
+	
 })
